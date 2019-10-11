@@ -1,3 +1,11 @@
+<div class="row">
+    <div class="col-md-6">
+        <h4>Welcome to my Online Store</h4>
+    </div>
+    <div class="col-md-6">
+      <app-cartSummary></app-cartSummary>
+    </div>
+</div>
 
 <div class="row">
   <div class="col-md-3">
@@ -9,7 +17,7 @@
           </div>
          <div>
            <ul class="list-group list-group-flush" >
-             <li class="list-group-item" (click)="changeCategory()" style="background-color: #dee2e6">All Products</li>
+             <li class="list-group-item" (click)="changeCategory()" style="background-color: #dee2e6">All Categories</li>
            </ul>
          </div>
           <ul class="list-group list-group-flush" *ngFor="let cat of categories"
@@ -37,20 +45,31 @@
               <th scope="col">NAME OF PRODUCT</th>
               <th scope="col">DESCRIPTION</th>
               <th scope="col">PRICE (Le)</th>
+              <th scope="col">ORDER</th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let product of products">
-<!--              <th scope="row">1</th>-->
+<!--              <th scope="row">{{product.id}}</th>-->
               <td>{{product.name}}</td>
               <td>{{product.description}}</td>
               <td>{{product.price | currency: "Le"}}</td>
+              <td><button class="btn btn-sm btn-success float-right"
+              (click)="addProductToCart(product)" routerLink="/cart">
+                Add to Cart
+              </button></td>
             </tr>
             </tbody>
           </table>
           </div>
       </div>
     </div>
-
+    <p class="float-left">Pages:</p>
+    <div class="btn-group float-right">
+      <button *ngFor="let page of pageNumbers" (click)="changePage(page)"
+              class="btn btn-outline-dark btn-sm" [class.active]="page == selectedPage">
+         {{page}}
+      </button>
+    </div>
   </div>
 </div>

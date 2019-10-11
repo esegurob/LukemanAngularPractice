@@ -8,6 +8,12 @@ import {DataService} from './services/data.service';
 import { HomeComponent } from './components/home/home.component';
 import { TodoComponent } from './components/todo/todo.component';
 import { AssignmentComponent } from './components/assignment/assignment.component';
+import {FormsModule} from '@angular/forms';
+import {CartService} from './services/cart.service';
+import { CartSummaryComponent } from './components/cartsummary/cartSummary.component';
+import { CartDetailsComponent } from './components/cart-details/cart-details.component';
+import {OrderService} from './services/order.service';
+import {OrderRepositoryService} from './services/order-repository.service';
 
 @NgModule({
   declarations: [
@@ -15,13 +21,21 @@ import { AssignmentComponent } from './components/assignment/assignment.componen
     StoreComponent,
     HomeComponent,
     TodoComponent,
-    AssignmentComponent
+    AssignmentComponent,
+    CartSummaryComponent,
+    CartDetailsComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
-  providers: [DataService],
+  providers: [
+    DataService,
+    CartService,
+    OrderService,
+    OrderRepositoryService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

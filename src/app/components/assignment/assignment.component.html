@@ -1,1 +1,15 @@
 <p>assignment works!</p>
+
+<div class="row">
+  <div class="col">
+    <input type="number" (change)="getValue($event.target)"/>
+  </div>
+
+  <div class="col">
+    <input type="number"  #someInput  placeholder="type here"/>
+  </div>
+
+  <button class="btn btn-danger" (click)="onLog()">
+    Log
+  </button>
+</div>

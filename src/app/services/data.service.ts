@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Product} from '../model/Product';
 import {from, Observable} from 'rxjs';
+import {OrderService} from './order.service';
 
 @Injectable({
   providedIn: 'root'
@@ -25,5 +26,11 @@ export class DataService {
 // this method returns all products
   getProducts() : Observable<Product[]>{
     return from([this.products]);
+  }
+
+
+  saveOrder( order: OrderService) : Observable<OrderService>{
+    console.log(JSON.stringify(order));
+    return from([order]);
   }
 }
