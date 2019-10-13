@@ -7,10 +7,14 @@
     </button>
     <div class="collapse navbar-collapse" id="navbars">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active"> <a class="nav-link" routerLink="/home">Home</a> </li>
-        <li class="nav-item"> <a class="nav-link" routerLink="/todo">Todo List</a> </li>
-        <li class="nav-item"> <a class="nav-link" routerLink="/product">Online Store</a> </li>
-        <li class="nav-item"> <a class="nav-link" routerLink="/cart">Cart Details</a> </li>
+        <li class="nav-item"> <a class="nav-link" routerLink="/home"
+        routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"  >Home</a> </li>
+        <li class="nav-item"> <a class="nav-link" routerLink="/todo"
+                                 routerLinkActive="active">Todo List</a> </li>
+        <li class="nav-item"> <a class="nav-link" routerLink="/product"
+                                 routerLinkActive="active">Online Store</a> </li>
+        <li class="nav-item"> <a class="nav-link" routerLink="/cart"
+                                 routerLinkActive="active">Cart Details</a> </li>
       </ul>
     </div>
   </div>

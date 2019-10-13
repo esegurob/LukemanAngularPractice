@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Model, TodoItem} from '../../model/Model';
 
 @Component({
   selector: 'app-todo',
@@ -7,27 +8,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodoComponent implements OnInit {
 
-  itemCounter: number;
-  projectTask: string = " Angular Practice";
-  listOfTasks =[];
+  model= new Model();
+  inputTask: string = "Angular";
+  @ViewChild('task', {static:true}) myTask: ElementRef;
+
   constructor() { }
 
   ngOnInit() {
-    this.itemCounter = this.listOfTasks.length;
+  }
+
+  // return all itams in the array
+  getTodoItems(){
+    return  this.model.items
+  }
+  // this method get the name
+  getName(){
+    return this.model.user;
   }
 
   // this method add task in the array of listOfTask
-  addItems(){
-    if (this.projectTask != null || this.projectTask != '') {
-    this.listOfTasks.push(this.projectTask);
-    this.projectTask = '';
-    this.itemCounter = this.listOfTasks.length;
+  addItems(projectTask: string){
+    if (projectTask !="") {
+     this.model.items.push( new TodoItem(projectTask,false));
+     this.inputTask = '';
     }
   }
 
+  // this method remove item in an array
   removeItems(i){
-   // this.listOfTasks.pop();
-    this.listOfTasks.splice(i,1);
-    this.itemCounter = this.listOfTasks.length;
+    this.model.items.splice(i,1);
   }
+
 }

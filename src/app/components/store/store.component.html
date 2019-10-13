@@ -45,6 +45,7 @@
               <th scope="col">NAME OF PRODUCT</th>
               <th scope="col">DESCRIPTION</th>
               <th scope="col">PRICE (Le)</th>
+              <th scope="col">DETAILS</th>
               <th scope="col">ORDER</th>
             </tr>
             </thead>
@@ -55,8 +56,12 @@
               <td>{{product.description}}</td>
               <td>{{product.price | currency: "Le"}}</td>
               <td><button class="btn btn-sm btn-success float-right"
+                          (click)="getProductById(product.id)">
+                <i class="fa fa-eye"></i> View
+              </button></td>
+              <td><button class="btn btn-sm btn-success float-right"
               (click)="addProductToCart(product)" routerLink="/cart">
-                Add to Cart
+                <i class="fa fa-plus"></i> Add to Cart
               </button></td>
             </tr>
             </tbody>
@@ -70,6 +75,24 @@
               class="btn btn-outline-dark btn-sm" [class.active]="page == selectedPage">
          {{page}}
       </button>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-9">
+    <div class="row no-gutters" *ngIf="myProduct" >
+      <div class="col-md-5" *ngIf="myProduct.image">
+        <img src="{{myProduct.image}}" class="card-img img-thumbnail" height="100" width="150">
+      </div>
+      <div class="col">
+        <div class="card-body">
+          <p>Name:- {{" "+ myProduct.name}}</p>
+          <p>Description:- {{" "+ myProduct.description}}</p>
+          <p>Price:- {{" "+ myProduct.price | currency: "Le"}}</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>

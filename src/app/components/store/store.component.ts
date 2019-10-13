@@ -10,9 +10,7 @@ import {CartService} from '../../services/cart.service';
 })
 export class StoreComponent implements OnInit {
 
-  isFav: boolean =true;
-
-
+  myProduct: Product;
   public selectedCategory = null;
   public productPerPage = 4;
   public selectedPage = 1;
@@ -34,6 +32,9 @@ export class StoreComponent implements OnInit {
     return  this.productService.getCategories();
   }
 
+  getProductById(id: number){
+    return this.myProduct = this.productService.getProductById(id);
+  }
   changeCategory(newCategory?: string){
     this.selectedCategory = newCategory;
   }
@@ -53,10 +54,7 @@ export class StoreComponent implements OnInit {
       .fill(0).map((x, i)=> i+1);
   }
 
-
-
   // implementation of cart services
-
   //this method add the product to the cart
   addProductToCart(product : Product){
     this.cartService.addLine(product);
